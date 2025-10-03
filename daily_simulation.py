@@ -1,32 +1,31 @@
-# src/strike_simulation.py
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 import os
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 from datetime import datetime
 
-# Output folder
+# Create output folder if it doesn't exist
 output_dir = os.path.join(os.path.dirname(__file__), "../outputs")
 os.makedirs(output_dir, exist_ok=True)
 
-# Simulation parameters
-spread = 5.5           # Expected spread from strike_model
+# Monte Carlo simulation
+spread = 5.5
 n_sim = 10000
-simulated_margins = np.random.normal(loc=spread, scale=12, size=n_sim)
+simulated_margins = np.random.normal(spread, 12, n_sim)
+
+# Timestamp for unique filenames
+timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
 # Save CSV
-timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 csv_file = os.path.join(output_dir, f"simulation_{timestamp}.csv")
 pd.DataFrame({"Simulated Margins": simulated_margins}).to_csv(csv_file, index=False)
 
 # Save histogram
 plt.hist(simulated_margins, bins=40, edgecolor="black")
-plt.title("Monte Carlo NBA Simulation")
-plt.xlabel("Margin (Team A - Team B)")
+plt.title("NBA Simulation")
+plt.xlabel("Margin")
 plt.ylabel("Frequency")
-png_file = os.path.join(output_dir, f"simulation_hist_{timestamp}.png")
-plt.savefig(png_file)
+plt.savefig(os.path.join(output_dir, f"simulation_hist_{timestamp}.png"))
 plt.close()
 
-print(f"Simulation saved: {csv_file}")
-print(f"Histogram saved: {png_file}")
+print(f"Saved simulation CSV and PNG to {output_dir}")

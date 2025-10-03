@@ -1,0 +1,9 @@
+{
+    "files.hotExit": "onExitAndWindowClose",
+    "files.restoreWindows": "all",
+    "workbench.startupEditor": "none",
+    "workbench.editor.restoreViewState": true,
+    "workbench.editor.openEditors": [
+        "notebooks/Strike_Model_Build.ipynb"
+    ]
+}
