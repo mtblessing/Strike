@@ -1,0 +1,76 @@
+Strike Project - Instructions
+
+This file explains each Python script in the Strike project, what to run, and expected outcomes.
+
+---------------------------------------------
+1. src/strike_model.py
+---------------------------------------------
+Purpose:
+- Calculate expected point spread and win probability between two teams.
+
+How to Run:
+- Open terminal or VS Code.
+- Run:
+    python src/strike_model.py
+
+Expected Output:
+- Prints the expected point spread for the matchup.
+- Prints win probability for Team A and Team B.
+Example:
+Expected Spread: 6.00 points
+Win Probability Knicks: 70.0%
+Win Probability 76ers: 30.0%
+
+---------------------------------------------
+2. src/strike_simulation.py
+---------------------------------------------
+Purpose:
+- Run Monte Carlo simulations of a game using the expected spread.
+- Generate thousands of simulated outcomes.
+
+How to Run:
+- Run:
+    python src/strike_simulation.py
+
+Expected Output:
+- CSV file in outputs/ with simulated margins.
+  Example: outputs/simulation_2025-10-04_12-00-00.csv
+- Histogram PNG of simulated outcomes.
+  Example: outputs/simulation_hist_2025-10-04_12-00-00.png
+- Prints location of saved CSV and PNG.
+
+---------------------------------------------
+3. src/strike_data.py
+---------------------------------------------
+Purpose:
+- Placeholder for team stats or future API integration.
+- Provides offensive/defensive ratings and net ratings for teams.
+
+How to Run:
+- Run:
+    python src/strike_data.py
+
+Expected Output:
+- Prints a dictionary of team stats.
+Example:
+Team stats loaded:
+Knicks: {'ORTG': 115.0, 'DRTG': 110.5, 'Net Rating': 4.5}
+76ers: {'ORTG': 113.5, 'DRTG': 112.0, 'Net Rating': 1.5}
+
+---------------------------------------------
+4. src/__init__.py
+---------------------------------------------
+Purpose:
+- Marks src/ as a Python package.
+- Can be left empty.
+
+---------------------------------------------
+Usage Notes:
+- Ensure outputs/ folder exists to save simulation results.
+- You can modify spreads, team ratings, and number of Monte Carlo simulations as needed.
+- Scripts can be run offline without internet access.
+
+---------------------------------------------
+Optional:
+- Integrate with Excel or Power BI for dashboards using the CSV outputs.
+- Automate daily runs using Task Scheduler (Windows) or cron (Mac/Linux).
